@@ -17,6 +17,7 @@ export function createMatcher (
   routes: Array<RouteConfig>,
   router: VueRouter
 ): Matcher {
+  // gongdf-pathList是path的集合，pathMap是每个path对应的record对象，nameMap是每个name对应的record对象
   const { pathList, pathMap, nameMap } = createRouteMap(routes)
 
   function addRoutes (routes) {

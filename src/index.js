@@ -41,6 +41,7 @@ export default class VueRouter {
     this.afterHooks = []
     this.matcher = createMatcher(options.routes || [], this)
 
+    // gongdf-默认是hash模式
     let mode = options.mode || 'hash'
     this.fallback = mode === 'history' && !supportsPushState && options.fallback !== false
     if (this.fallback) {
@@ -51,6 +52,7 @@ export default class VueRouter {
     }
     this.mode = mode
 
+    // gongdf-不同模式对路由变化的监听方式不同
     switch (mode) {
       case 'history':
         this.history = new HTML5History(this, options.base)
@@ -257,6 +259,7 @@ function createHref (base: string, fullPath: string, mode) {
 VueRouter.install = install
 VueRouter.version = '__VERSION__'
 
+// gongdf-全局Vue使用时不需要再use
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter)
 }
