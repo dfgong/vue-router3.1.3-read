@@ -35,6 +35,7 @@ export class HashHistory extends History {
         if (!ensureSlash()) {
           return
         }
+        // gongdf-路由变化时调用transitionTo（base.js,History类中）
         this.transitionTo(getHash(), route => {
           if (supportsScroll) {
             handleScroll(this.router, route, current, true)

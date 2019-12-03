@@ -28,7 +28,8 @@ export class HTML5History extends History {
       if (this.current === START && location === initLocation) {
         return
       }
-
+      
+      // gongdf-路由变化时调用transitionTo（base.js,History类中）
       this.transitionTo(location, route => {
         if (supportsScroll) {
           handleScroll(router, route, current, true)

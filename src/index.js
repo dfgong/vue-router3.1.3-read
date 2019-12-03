@@ -43,11 +43,13 @@ export default class VueRouter {
 
     // gongdf-默认是hash模式
     let mode = options.mode || 'hash'
+    // gongdf- supportsPushState判断浏览器是否支持HTML5History方式
     this.fallback = mode === 'history' && !supportsPushState && options.fallback !== false
     if (this.fallback) {
       mode = 'hash'
     }
     if (!inBrowser) {
+      // gongdf- 非浏览器环境
       mode = 'abstract'
     }
     this.mode = mode
@@ -82,6 +84,7 @@ export default class VueRouter {
     return this.history && this.history.current
   }
 
+  // gongdf-在install时mixin到beforeCreate中调用
   init (app: any /* Vue component instance */) {
     process.env.NODE_ENV !== 'production' && assert(
       install.installed,
@@ -125,6 +128,7 @@ export default class VueRouter {
       )
     }
 
+    // gongdf-初始化History中this.cb的值，用于更新路由时调用
     history.listen(route => {
       this.apps.forEach((app) => {
         app._route = route

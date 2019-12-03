@@ -43,6 +43,7 @@ export class History {
     this.errorCbs = []
   }
 
+  // gongdf-在VueRouter类的init方法调用(index.js中)
   listen (cb: Function) {
     this.cb = cb
   }
@@ -71,6 +72,7 @@ export class History {
     this.confirmTransition(
       route,
       () => {
+        // gongdf-更新路由
         this.updateRoute(route)
         onComplete && onComplete(route)
         this.ensureURL()
@@ -203,6 +205,7 @@ export class History {
   updateRoute (route: Route) {
     const prev = this.current
     this.current = route
+    // gongdf-cb在本类的listen方法中赋值
     this.cb && this.cb(route)
     this.router.afterHooks.forEach(hook => {
       hook && hook(route, prev)

@@ -27,7 +27,7 @@ export function install (Vue) {
         this._routerRoot = this
         this._router = this.$options.router
         this._router.init(this)
-        // gongdf-定义响应式，将_route下的数据用defineProperty定义get、set，并订阅。
+        // gongdf-定义响应式数据_router，将_route下的数据用defineProperty定义get、set，并订阅。当_route值改变时，会自动调用Vue实例的render()方法
         Vue.util.defineReactive(this, '_route', this._router.history.current)
       } else {
         // gongdf-_routerRoot是当前vue的实例
